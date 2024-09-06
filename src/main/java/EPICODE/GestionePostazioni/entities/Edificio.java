@@ -21,4 +21,10 @@ public class Edificio {
 
     @OneToMany(mappedBy = "edificio")
     private List<Postazione> postazioni;
+
+    public Edificio(String nome, String indirizzo, String citta) {
+        this.nome = nome;
+        this.indirizzo = indirizzo;
+        this.citta = citta;
+    }
 }

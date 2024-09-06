@@ -24,5 +24,15 @@ public class EdificioService {
     public Edificio findById(long edificioId) {
         return edificioRepository.findById(edificioId).orElseThrow(() -> new NotFoundException(edificioId));
     }
+
+    public void findByIdAndDelete(long edificioId) {
+        Edificio found = this.findById(edificioId);
+        edificioRepository.delete(found);
+        log.info("Utente con id " + edificioId + " cancellato correttamente!");
+    }
+
+    public long count() {
+        return edificioRepository.count();
+    }
     
 }

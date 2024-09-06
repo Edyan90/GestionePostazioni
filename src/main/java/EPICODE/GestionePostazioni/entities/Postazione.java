@@ -29,4 +29,10 @@ public class Postazione {
     @OneToMany(mappedBy = "postazione")
     private List<Prenotazione> prenotazioni;
 
+    public Postazione(String descrizione, PostazioneType postazioneType, int numeroMaxOccupanti, Edificio edificio) {
+        this.descrizione = descrizione;
+        this.postazioneType = postazioneType;
+        this.numeroMaxOccupanti = numeroMaxOccupanti;
+        this.edificio = edificio;
+    }
 }
