@@ -21,12 +21,12 @@ public class EdificioService {
         log.info("Nuovo edificio " + edificio.getNome() + " salvato con successo!");
     }
 
-    public Edificio findById(long edificioId) {
+    public Edificio findByIdEdificio(long edificioId) {
         return edificioRepository.findById(edificioId).orElseThrow(() -> new NotFoundException(edificioId));
     }
 
     public void findByIdAndDelete(long edificioId) {
-        Edificio found = this.findById(edificioId);
+        Edificio found = this.findByIdEdificio(edificioId);
         edificioRepository.delete(found);
         log.info("L'edificio con id: " + edificioId + " cancellato correttamente!");
     }

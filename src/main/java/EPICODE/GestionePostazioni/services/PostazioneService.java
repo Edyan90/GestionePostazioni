@@ -14,7 +14,6 @@ public class PostazioneService {
     private PostazioneRepository postazioneRepository;
 
     public void savePostazione(Postazione postazione) {
-
         postazioneRepository.save(postazione);
         log.info("Nuova postazione con ID: " + postazione.getId() + " di tipo" + postazione.getPostazioneType() + "situato in: " + postazione.getEdificio().getIndirizzo() + "-" + postazione.getEdificio().getCitta() + " salvata con successo!");
     }
