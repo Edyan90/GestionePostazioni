@@ -3,16 +3,19 @@ package EPICODE.GestionePostazioni.entities;
 import EPICODE.GestionePostazioni.enums.PostazioneType;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Table(name = "postazioni")
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+
 public class Postazione {
-    private final boolean stato = true;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
@@ -34,5 +37,17 @@ public class Postazione {
         this.postazioneType = postazioneType;
         this.numeroMaxOccupanti = numeroMaxOccupanti;
         this.edificio = edificio;
+    }
+
+    @Override
+    public String toString() {
+        return "Postazione{" +
+                "stato=" + stato +
+                ", id=" + id +
+                ", descrizione='" + descrizione + '\'' +
+                ", postazioneType=" + postazioneType +
+                ", numeroMaxOccupanti=" + numeroMaxOccupanti +
+                ", edificio=" + edificio.getNome() + "/" + edificio.getCitta() +
+                '}';
     }
 }

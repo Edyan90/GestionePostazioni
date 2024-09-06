@@ -2,14 +2,18 @@ package EPICODE.GestionePostazioni.entities;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
 @Entity
 @Table(name = "edifici")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+
 public class Edificio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +23,7 @@ public class Edificio {
     private String indirizzo;
     private String citta;
 
-    @OneToMany(mappedBy = "edificio")
+    @OneToMany(mappedBy = "edificio", fetch = FetchType.EAGER)
     private List<Postazione> postazioni;
 
     public Edificio(String nome, String indirizzo, String citta) {
@@ -27,4 +31,5 @@ public class Edificio {
         this.indirizzo = indirizzo;
         this.citta = citta;
     }
+
 }
