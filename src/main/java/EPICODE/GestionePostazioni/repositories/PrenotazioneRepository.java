@@ -1,6 +1,7 @@
 package EPICODE.GestionePostazioni.repositories;
 
 import EPICODE.GestionePostazioni.entities.Prenotazione;
+import EPICODE.GestionePostazioni.entities.Utente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,6 @@ import java.util.List;
 public interface PrenotazioneRepository extends JpaRepository<Prenotazione, Long> {
     @Query("SELECT p.data FROM Prenotazione p WHERE p.postazione.id = :postazioneId")
     List<LocalDate> findDatesByPostazioneId(Long postazioneId);
+
+    boolean existsByUtenteAndDataPrenotazione(Utente utente, LocalDate dataPrenotazione);
 }

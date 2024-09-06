@@ -42,7 +42,6 @@ public class Postazione {
     @Override
     public String toString() {
         return "Postazione{" +
-                "stato=" + stato +
                 ", id=" + id +
                 ", descrizione='" + descrizione + '\'' +
                 ", postazioneType=" + postazioneType +
