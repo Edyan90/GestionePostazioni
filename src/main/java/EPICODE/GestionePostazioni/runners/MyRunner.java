@@ -2,6 +2,7 @@ package EPICODE.GestionePostazioni.runners;
 
 import EPICODE.GestionePostazioni.entities.Edificio;
 import EPICODE.GestionePostazioni.entities.Postazione;
+import EPICODE.GestionePostazioni.entities.Prenotazione;
 import EPICODE.GestionePostazioni.entities.Utente;
 import EPICODE.GestionePostazioni.services.EdificioService;
 import EPICODE.GestionePostazioni.services.PostazioneService;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class MyRunner implements CommandLineRunner {
@@ -32,7 +35,7 @@ public class MyRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("--------------------QUI SIAMO DENTRO AL RUN----------------------");
-        ///Salvataggi Edifici
+        System.out.println("----------SALVATAGGI EDIFICI: ");
         Edificio edificio1 = ctx.getBean("accentureRoma", Edificio.class);
         Edificio edificio2 = ctx.getBean("accentureMilano", Edificio.class);
         Edificio edificio3 = ctx.getBean("stmItaliaRoma", Edificio.class);
@@ -44,6 +47,7 @@ public class MyRunner implements CommandLineRunner {
         edificioService.saveEdificio(edificio4);
 
         ///Salvataggi Utenti
+        System.out.println("----------SALVATAGGI UTENTI: ");
         Utente utente1 = ctx.getBean("utente1", Utente.class);
         Utente utente2 = ctx.getBean("utente2", Utente.class);
         Utente utente3 = ctx.getBean("utente3", Utente.class);
@@ -59,7 +63,7 @@ public class MyRunner implements CommandLineRunner {
 //        Edificio edificioDb3 = edificioService.findByIdEdificio(4);
 //        Edificio edificioDB4 = edificioService.findByIdEdificio(5);
 
-
+        System.out.println("----------SALVATAGGI POSTAZIONI: ");
         ////creo ora le postazioni dato che esse hanno bisogno dell'edificio prima di essere create
         Postazione postazione1 = ctx.getBean("postazioneOpenSpace", Postazione.class);
         Postazione postazione2 = ctx.getBean("postazionePrivato1", Postazione.class);
@@ -73,6 +77,16 @@ public class MyRunner implements CommandLineRunner {
         postazioneService.savePostazione(postazione3);
         postazioneService.savePostazione(postazione4);
         postazioneService.savePostazione(postazione5);
+
+        ///creiamo manualmente le prenotazioni
+        System.out.println("----------CREAZIONE E SALVATAGGIO PRENOTAZIONI: ");
+        LocalDate localDate1 = LocalDate.of(2024, 08, 31);
+        LocalDate localDate2 = LocalDate.of(2024, 09, 01);
+        LocalDate localDate3 = LocalDate.of(2024, 09, 02);
+        LocalDate localDate4_1 = LocalDate.of(2024, 08, 31);
+
+
+        prenotazioneService.savePrenotazione(new Prenotazione(LocalDate));
         System.out.println("-------------------------QUI FINISCE IL RUN-------------------------");
     }
 }
