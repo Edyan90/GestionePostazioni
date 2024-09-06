@@ -8,17 +8,18 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "edifici")
+@Table(name = "utenti")
 @Data
-public class Edificio {
+public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private Long id;
-    private String nome;
-    private String indirizzo;
-    private String citta;
+    private String username;
+    private String nomeCompleto;
+    private String email;
 
-    @OneToMany(mappedBy = "edificio")
-    private List<Postazione> postazioni;
+
+    @OneToMany(mappedBy = "utente")
+    private List<Prenotazione> prenotazioni;
 }
