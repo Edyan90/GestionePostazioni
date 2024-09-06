@@ -4,6 +4,7 @@ import EPICODE.GestionePostazioni.entities.Edificio;
 import EPICODE.GestionePostazioni.entities.Postazione;
 import EPICODE.GestionePostazioni.entities.Prenotazione;
 import EPICODE.GestionePostazioni.entities.Utente;
+import EPICODE.GestionePostazioni.enums.PostazioneType;
 import EPICODE.GestionePostazioni.services.EdificioService;
 import EPICODE.GestionePostazioni.services.PostazioneService;
 import EPICODE.GestionePostazioni.services.PrenotazioneService;
@@ -14,6 +15,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class MyRunner implements CommandLineRunner {
@@ -90,7 +92,12 @@ public class MyRunner implements CommandLineRunner {
         prenotazioneService.savePrenotazione(new Prenotazione(localDate3, postazione3, utente3));
 
         //verifica metodo in caso di postazione occupata la stessa data
+        System.out.println("CREAZIONE E SALVATAGGIO PRENOTAZIONE DI POSTAZIONE GIà OCCUPATA E RELATIVO MESS DI ERRORE: ");
+
         prenotazioneService.savePrenotazione(new Prenotazione(localDate1, postazione1, utente3));
+        System.out.println("------------------metodo per trovare una lista di postazione tramite tipo e città");
+        List<Postazione> listapostazioni = utenteService.findByPostazioneTypeAndCity(PostazioneType.PRIVATO, "Roma");
+        listapostazioni.forEach(System.out::println);
         System.out.println("-------------------------QUI FINISCE IL RUN-------------------------");
     }
 }
