@@ -6,9 +6,11 @@ import EPICODE.GestionePostazioni.entities.Utente;
 import EPICODE.GestionePostazioni.enums.PostazioneType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
+@PropertySource("application.properties")
 public class GenericConfig {
     ////EDIFICI
     @Bean

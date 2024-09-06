@@ -14,7 +14,7 @@ public class EdificioService {
     @Autowired
     private EdificioRepository edificioRepository;
 
-    public void saveUser(Edificio edificio) {
+    public void saveEdificio(Edificio edificio) {
 
         if (edificio.getNome().length() < 2) throw new ValidationException("Nome troppo corto!");
         edificioRepository.save(edificio);
@@ -28,11 +28,11 @@ public class EdificioService {
     public void findByIdAndDelete(long edificioId) {
         Edificio found = this.findById(edificioId);
         edificioRepository.delete(found);
-        log.info("Utente con id " + edificioId + " cancellato correttamente!");
+        log.info("L'edificio con id: " + edificioId + " cancellato correttamente!");
     }
 
     public long count() {
         return edificioRepository.count();
     }
-    
+
 }
