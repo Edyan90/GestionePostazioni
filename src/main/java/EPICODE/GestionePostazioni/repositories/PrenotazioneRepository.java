@@ -14,5 +14,5 @@ public interface PrenotazioneRepository extends JpaRepository<Prenotazione, Long
     @Query("SELECT p.data FROM Prenotazione p WHERE p.postazione.id = :postazioneId")
     List<LocalDate> findDatesByPostazioneId(Long postazioneId);
 
-    boolean existsByUtenteAndDataPrenotazione(Utente utente, LocalDate dataPrenotazione);
+    boolean existsByUtenteAndData(Utente utente, LocalDate data);
 }

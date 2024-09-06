@@ -27,7 +27,7 @@ public class PrenotazioneService {
                 return false;
             }
         }
-        if (prenotazioneRepository.existsByUtenteAndDataPrenotazione(utente, requestedDate)) {
+        if (prenotazioneRepository.existsByUtenteAndData(utente, requestedDate)) {
             return false;
         }
 
