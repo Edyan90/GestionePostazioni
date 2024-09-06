@@ -80,13 +80,17 @@ public class MyRunner implements CommandLineRunner {
 
         ///creiamo manualmente le prenotazioni
         System.out.println("----------CREAZIONE E SALVATAGGIO PRENOTAZIONI: ");
-        LocalDate localDate1 = LocalDate.of(2024, 08, 31);
-        LocalDate localDate2 = LocalDate.of(2024, 09, 01);
-        LocalDate localDate3 = LocalDate.of(2024, 09, 02);
-        LocalDate localDate4_1 = LocalDate.of(2024, 08, 31);
+        LocalDate localDate1 = LocalDate.of(2024, 8, 31);
+        LocalDate localDate2 = LocalDate.of(2024, 9, 01);
+        LocalDate localDate3 = LocalDate.of(2024, 9, 02);
 
 
-        prenotazioneService.savePrenotazione(new Prenotazione(LocalDate));
+        prenotazioneService.savePrenotazione(new Prenotazione(localDate1, postazione1, utente1));
+        prenotazioneService.savePrenotazione(new Prenotazione(localDate2, postazione2, utente2));
+        prenotazioneService.savePrenotazione(new Prenotazione(localDate3, postazione3, utente3));
+
+        //verifica metodo in caso di postazione occupata la stessa data
+        prenotazioneService.savePrenotazione(new Prenotazione(localDate1, postazione1, utente3));
         System.out.println("-------------------------QUI FINISCE IL RUN-------------------------");
     }
 }

@@ -31,7 +31,7 @@ public class PrenotazioneService {
             prenotazioneRepository.save(prenotazione);
             log.info("Nuova prenotazione con ID " + prenotazione.getId() + "salvata con successo!");
         } else {
-            throw new IllegalArgumentException("Postazione già prenotata per questa data");
+            System.err.println("Postazione già prenotata per quella data, riprovare con un altra postazione");
         }
     }
 
