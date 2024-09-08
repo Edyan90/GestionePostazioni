@@ -32,5 +32,4 @@ public class PostazioneService {
         return postazioneRepository.count();
     }
 
-
 }

@@ -104,6 +104,10 @@ public class MyRunner implements CommandLineRunner {
         List<Postazione> listapostazioni = utenteService.findByPostazioneTypeAndCity(PostazioneType.PRIVATO, "Roma");
         listapostazioni.forEach(System.out::println);
 
+        System.out.println("------------------------metodi extra del fine settimana come esercitazione personale-----------------");
+        List<Edificio> edifici = edificioService.findByCity("Roma");
+        edifici.forEach(System.out::println);
+
         System.out.println("-------------------------QUI FINISCE IL RUN-------------------------");
     }
 }
