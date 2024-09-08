@@ -3,6 +3,7 @@ package EPICODE.GestionePostazioni.entities;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @Table(name = "prenotazioni")
 @Entity
 @Data
+@NoArgsConstructor
 public class Prenotazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
