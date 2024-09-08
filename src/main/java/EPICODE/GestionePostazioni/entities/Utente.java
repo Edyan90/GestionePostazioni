@@ -3,6 +3,7 @@ package EPICODE.GestionePostazioni.entities;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "utenti")
 @Data
+@NoArgsConstructor
 public class Utente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

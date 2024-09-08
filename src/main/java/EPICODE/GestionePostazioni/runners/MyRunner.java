@@ -93,8 +93,12 @@ public class MyRunner implements CommandLineRunner {
 
         //verifica metodo in caso di postazione occupata la stessa data
         System.out.println("CREAZIONE E SALVATAGGIO PRENOTAZIONE DI POSTAZIONE GIà OCCUPATA E RELATIVO MESS DI ERRORE: ");
+        //potremmo ripescare l'utente e la postazione dal DB tramite numero ID
+        Utente utenteDB1 = utenteService.findById(1);
+        Postazione postazioneDB1 = postazioneService.findById(2);
 
-        prenotazioneService.savePrenotazione(new Prenotazione(localDate1, postazione1, utente3));
+        //prenotazioneService.savePrenotazione(new Prenotazione(localDate1, postazione1, utente3));
+        prenotazioneService.savePrenotazione(new Prenotazione(localDate1, postazioneDB1, utenteDB1));
         System.out.println("------------------metodo per trovare una lista di postazione tramite tipo e città");
 
         List<Postazione> listapostazioni = utenteService.findByPostazioneTypeAndCity(PostazioneType.PRIVATO, "Roma");
