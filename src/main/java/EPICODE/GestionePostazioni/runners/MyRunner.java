@@ -36,8 +36,8 @@ public class MyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("--------------------QUI SIAMO DENTRO AL RUN----------------------");
-        System.out.println("----------SALVATAGGI EDIFICI: ");
+        System.out.println("--------------------QUI SIAMO DENTRO AL RUN----------------------" );
+        System.out.println("----------SALVATAGGI EDIFICI: " );
         Edificio edificio1 = ctx.getBean("accentureRoma", Edificio.class);
         Edificio edificio2 = ctx.getBean("accentureMilano", Edificio.class);
         Edificio edificio3 = ctx.getBean("stmItaliaRoma", Edificio.class);
@@ -49,7 +49,7 @@ public class MyRunner implements CommandLineRunner {
         edificioService.saveEdificio(edificio4);
 
         ///Salvataggi Utenti
-        System.out.println("----------SALVATAGGI UTENTI: ");
+        System.out.println("----------SALVATAGGI UTENTI: " );
         Utente utente1 = ctx.getBean("utente1", Utente.class);
         Utente utente2 = ctx.getBean("utente2", Utente.class);
         Utente utente3 = ctx.getBean("utente3", Utente.class);
@@ -65,7 +65,7 @@ public class MyRunner implements CommandLineRunner {
 //        Edificio edificioDb3 = edificioService.findByIdEdificio(4);
 //        Edificio edificioDB4 = edificioService.findByIdEdificio(5);
 
-        System.out.println("----------SALVATAGGI POSTAZIONI: ");
+        System.out.println("----------SALVATAGGI POSTAZIONI: " );
         ////creo ora le postazioni dato che esse hanno bisogno dell'edificio prima di essere create
         Postazione postazione1 = ctx.getBean("postazioneOpenSpace", Postazione.class);
         Postazione postazione2 = ctx.getBean("postazionePrivato1", Postazione.class);
@@ -81,7 +81,7 @@ public class MyRunner implements CommandLineRunner {
         postazioneService.savePostazione(postazione5);
 
         ///creiamo manualmente le prenotazioni
-        System.out.println("----------CREAZIONE E SALVATAGGIO PRENOTAZIONI: ");
+        System.out.println("----------CREAZIONE E SALVATAGGIO PRENOTAZIONI: " );
         LocalDate localDate1 = LocalDate.of(2024, 8, 31);
         LocalDate localDate2 = LocalDate.of(2024, 9, 01);
         LocalDate localDate3 = LocalDate.of(2024, 9, 02);
@@ -92,22 +92,26 @@ public class MyRunner implements CommandLineRunner {
         prenotazioneService.savePrenotazione(new Prenotazione(localDate3, postazione3, utente3));
 
         //verifica metodo in caso di postazione occupata la stessa data
-        System.out.println("CREAZIONE E SALVATAGGIO PRENOTAZIONE DI POSTAZIONE GIà OCCUPATA E RELATIVO MESS DI ERRORE: ");
+        System.out.println("CREAZIONE E SALVATAGGIO PRENOTAZIONE DI POSTAZIONE GIà OCCUPATA E RELATIVO MESS DI ERRORE: " );
         //potremmo ripescare l'utente e la postazione dal DB tramite numero ID
         Utente utenteDB1 = utenteService.findById(1);
         Postazione postazioneDB1 = postazioneService.findById(2);
 
         //prenotazioneService.savePrenotazione(new Prenotazione(localDate1, postazione1, utente3));
         prenotazioneService.savePrenotazione(new Prenotazione(localDate1, postazioneDB1, utenteDB1));
-        System.out.println("------------------metodo per trovare una lista di postazione tramite tipo e città");
+        System.out.println("------------------metodo per trovare una lista di postazione tramite tipo e città" );
 
-        List<Postazione> listapostazioni = utenteService.findByPostazioneTypeAndCity(PostazioneType.PRIVATO, "Roma");
+        List<Postazione> listapostazioni = utenteService.findByPostazioneTypeAndCity(PostazioneType.PRIVATO, "Roma" );
         listapostazioni.forEach(System.out::println);
 
-        System.out.println("------------------------metodi extra del fine settimana come esercitazione personale-----------------");
-        List<Edificio> edifici = edificioService.findByCity("Roma");
+        System.out.println("------------------------metodi extra del fine settimana come esercitazione personale-----------------" );
+        List<Edificio> edifici = edificioService.findByCity("Roma" );
         edifici.forEach(System.out::println);
 
-        System.out.println("-------------------------QUI FINISCE IL RUN-------------------------");
+        Edificio edificiofromDB = edificioService.findByIdEdificio(1);
+
+        List<Postazione> postazioneList = postazioneService.findByEdificioAndData(edificiofromDB, LocalDate.of(2024, 10, 01));
+        postazioneList.forEach(System.out::println);
+        System.out.println("-------------------------QUI FINISCE IL RUN-------------------------" );
     }
 }

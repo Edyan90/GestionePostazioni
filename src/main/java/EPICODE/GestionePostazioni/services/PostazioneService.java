@@ -1,11 +1,15 @@
 package EPICODE.GestionePostazioni.services;
 
+import EPICODE.GestionePostazioni.entities.Edificio;
 import EPICODE.GestionePostazioni.entities.Postazione;
 import EPICODE.GestionePostazioni.exceptions.NotFoundException;
 import EPICODE.GestionePostazioni.repositories.PostazioneRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -15,7 +19,7 @@ public class PostazioneService {
 
     public void savePostazione(Postazione postazione) {
         postazioneRepository.save(postazione);
-        log.info("Nuova postazione con ID: " + postazione.getId() + " di tipo" + postazione.getPostazioneType() + "situato in: " + postazione.getEdificio().getIndirizzo() + "-" + postazione.getEdificio().getCitta() + " salvata con successo!");
+        log.info("Nuova postazione con ID: " + postazione.getId() + " di tipo" + postazione.getPostazioneType() + "situato in: " + postazione.getEdificio().getIndirizzo() + "-" + postazione.getEdificio().getCitta() + " salvata con successo!" );
     }
 
     public Postazione findById(long postazioneId) {
@@ -25,11 +29,14 @@ public class PostazioneService {
     public void findByIdAndDelete(long postazioneId) {
         Postazione found = this.findById(postazioneId);
         postazioneRepository.delete(found);
-        log.info("Postazione con id: " + postazioneId + " cancellato correttamente!");
+        log.info("Postazione con id: " + postazioneId + " cancellato correttamente!" );
     }
 
     public long count() {
         return postazioneRepository.count();
     }
 
+    public List<Postazione> findByEdificioAndData(Edificio edificioNome, LocalDate data) {
+        return postazioneRepository.findByEdificioAndData(edificioNome, data);
+    }
 }

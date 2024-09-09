@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface EdificioRepository extends JpaRepository<Edificio, Long> {
-    @Query("SELECT e FROM Edificio e WHERE e.citta =:city")
+    @Query("SELECT e FROM Edificio e WHERE e.citta =:city" )
     List<Edificio> findEdificioByCity(String city);
+
 }
